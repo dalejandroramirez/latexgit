@@ -1,0 +1,84 @@
+\nclase{2}
+\section{Nociones básicas del flujo de trabajo}
+
+Los estados de nuestros archivos los podemos clasificar en uno de los siguentes 
+tres grupos: 
+
+\vspace{5 mm}
+\begin{description}
+ \item[Working tree] (árbol de trabajo) Es el área de trabajo actual donde reposan los documentos 
+ están siendo modificados. Cuando creamos o modificamos un archivo, estos 
+ cambios no serán salvados en git hasta que no pasen a la staging area o al 
+ repositorio local.
+ 
+ Pasamos archivos de Working tree al staging área cada vez que usamos el comando
+ \codigo{git add}
+ seguido del nombre del archivo.
+ 
+\vspace{5 mm}
+ \item[Staging area] (área de preparación) En esta área se encuentran los archivos salvados por git,
+  en el estado que fueron salvados. A estos archivos git les está haciendo 
+  seguimiento y están a la espera de un commit para pasar al repositorio local. 
+  Se se editan estos archivos, los cambios solo se verán reflejados en el 
+  working tree. 
+ 
+  Cuando corremos el comando
+  \codigo{git status}
+  git nos muestra a cuales archivos se encuentran en el working tree y por lo 
+  tanto no se les está haciendo seguimiento (untracked); git además nos muestra 
+  los archivos que estan en el staging área pendientes de un commit para pasar 
+  al repositorio local.
+  
+\vspace{5 mm}
+ \item[Local Repository] (repositorio local)
+  El repositorio local se encuentran todos los puntos de control y los 
+  comentarios, es el área donde se guarda todo.
+  
+  Solo se recomienda hacer hacer commits para pasar al repositorio local cuando
+  engloben partes completas, como una funcionalidad nueva, arreglo de un error o
+  añadir una nueva función. No se suelen introducir errores con los commit;
+  Si he añadido una nueva función al código, probar antes que funciona
+  correctamente. Todos los commit deben tener un mensaje claro y breve del 
+  contenido de los cambios.
+  
+  Podemos saltarnos el paso por el staging área utilizando la bandera -a en el 
+  commando git commit
+  
+ \codigo{ git commit -a}
+ 
+ de esta forma pasaran al repositorio local todos los archivos del working tree
+  o del stagin area que se les ha estado dando seguimiento. 
+  
+\end{description}
+
+\newpage 
+
+\section{Iteracciones con git}
+
+\begin{description}
+ \item[head] es el alias con el que se representa el punto de control (snapshot)
+ actual del proyecto.
+ 
+ \item[git log -p] Nos da más detalles de las diferencias entre snapshots.
+ 
+ \item[git show ID] Usa el ID de un commit como parámetro y muestra información
+ del commit y su patch asociado.
+ 
+ \item[git log --stat] da otra información sobre los cambios, como la cantidad
+ de líneas agregadas o eliminadas. 
+
+ \item[git diff --staged] Sirve para  ver lo que has preparado y será incluido 
+ en la próxima confirmación. Este comando compara tus cambios preparados con la 
+ última instantánea confirmada.
+ 
+ \item[git rm] Para eliminar ficheros.
+ 
+ \item[git mv] para cambial el nombre de los ficheros
+ 
+ \item[echo xxx $>$ .gitignore] para ignorar el archivo xxx.
+ 
+ \item[git add *] para agregar todo lo del working tree al staging area
+\end{description}
+
+
+ 
